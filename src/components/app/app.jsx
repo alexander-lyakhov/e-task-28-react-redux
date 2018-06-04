@@ -44,8 +44,6 @@ export default class App extends baseComponent
                     <Header />
 
                     <MovieGrid
-                        searchQuery={this.state.searchQuery}
-                        sortQuery={this.state.sortQuery}
                         onMovieTitleClick={this.showLandingPage}
                     />
 

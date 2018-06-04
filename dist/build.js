@@ -23496,8 +23496,6 @@ var App = function (_baseComponent) {
                     { className: 'main' },
                     _react2.default.createElement(_header2.default, null),
                     _react2.default.createElement(_movieGrid2.default, {
-                        searchQuery: this.state.searchQuery,
-                        sortQuery: this.state.sortQuery,
                         onMovieTitleClick: this.showLandingPage
                     }),
                     _react2.default.createElement(_landingPage2.default, {
