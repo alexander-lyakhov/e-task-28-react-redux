@@ -1,0 +1,94 @@
+.landing-page {
+    color: #000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    display: none;
+
+    &:before {
+        content: '';
+        display: block;
+        background: rgba(0, 0, 0, 0.5);
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+}
+
+.landing-page.show {
+    display: block;
+}
+
+.landing-page__content {
+    background: #fff;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.5);
+    width: 710px;
+    height: 100vh;
+    padding: 48px 16px 16px 16px;
+    position: fixed;
+    right: 0;
+
+    .header {
+        background: #404040;
+        width: 100%;
+        height: 32px;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        .btn-close {
+            cursor: pointer;
+            margin: 4px;
+            float: right;
+        }
+    }
+
+    .poster {
+        border: 2px solid #000;
+        float: left;
+        margin: 0 16px 0 0;
+        padding: 4px;
+    }
+
+    h2 {
+        font: 24px Georgia;
+        text-align: center;
+        letter-spacing: 1px;
+        margin: 0 0 16px 0;
+    }
+
+    .row {
+        margin: 12px 0 12px 0;
+
+        &.center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .likes {
+        font: 22px Georgia;
+        height: 24px;
+        line-height: 24px;
+        display: block;
+        padding: 0 2px;
+    }
+
+    .caption {
+        font-weight: bold;
+        display: block;
+    }
+
+    .value {
+        text-indent: 32px;
+        text-align: justify;
+        line-height: 24px;
+        display: block;
+    }
+}

@@ -1,0 +1,41 @@
+$selectorColor: #404040;
+
+.sort-control {
+    background: #606060;
+    height: 36px;
+    display: flex;
+    float: left;
+    margin: 0 0 0 8px;
+}
+
+.sort-control__item {
+    color: #eee;
+    width: 84px;
+    height: 36px;
+    line-height: 36;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    &.active {
+        color: #000;
+        background: #eee;
+        border-bottom: 3px solid $selectorColor;
+
+        &:after {
+            content: '';
+            background: $selectorColor;
+            display: block;
+            width: 8px;
+            height: 8px;
+            position: absolute;
+            transform: rotate(45deg);
+            left: 50%;
+            bottom: 0;
+            margin: 0 0 -4px -4px;
+        }
+    }
+}

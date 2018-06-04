@@ -1,0 +1,16 @@
+.movies {
+	background: #888;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	padding: 8px 0;
+
+	.no-resalt {
+		font: 64px verdana;
+		color: #606060;
+		text-align: center;
+		width: 100%;
+		padding: 16px;
+	}
+}
