@@ -1,5 +1,5 @@
 import React from 'react';
-import {Provider} from 'react-redux';
+import {Provider, connect} from 'react-redux';
 
 import store from '../../store/store.js';
 
@@ -12,29 +12,29 @@ import LandingPage from '../landing-page/landing-page.jsx';
 
 import '../../assets/react-logo.png';
 
-export default class App extends baseComponent
+class App extends baseComponent
 {
     constructor(props) {
         super(props);
 
         this.state = {
-            isLandingOpen: false,
+            //isLandingOpen: false,
             landingPageDetails: {}
         };
 
-        this.showLandingPage = this.showLandingPage.bind(this);
-        this.hideLandingPage = this.hideLandingPage.bind(this);
+        //this.showLandingPage = this.showLandingPage.bind(this);
+        //this.hideLandingPage = this.hideLandingPage.bind(this);
     }
 
     showLandingPage(data) {
         this.setState({
-            isLandingOpen: true,
+            //isLandingOpen: true,
             landingPageDetails: data
         });
     }
 
     hideLandingPage() {
-        this.setState({isLandingOpen: false});
+        //this.setState({isLandingOpen: false});
     }
 
     render() {
@@ -57,3 +57,13 @@ export default class App extends baseComponent
         )
     }
 }
+
+function mapDispatchToProps(dispatch) {
+	return {
+		toggleLandingPage: function() {
+			dispatch({type: 'TOGGLE_LANDING'});
+		}
+	}
+};
+
+export default connect(null, mapDispatchToProps)(App);

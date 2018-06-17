@@ -16,6 +16,10 @@ function reducer(state = initState, action) {
     	return Object.assign({}, state, {sortQuery: action.sortQuery});
     }
 
+    if (action.type === 'TOGGLE_LANDING') {
+    	console.log('TOGGLE_LANDING');
+    }
+
 	return state;
 }
 
