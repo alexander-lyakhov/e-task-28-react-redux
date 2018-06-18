@@ -57,7 +57,7 @@ function LandingPage(props)
 }
 
 LandingPage.propTypes = {
-    isOpen: pt.bool.isRequired,
+    //isOpen: pt.bool.isRequired,
 	details: pt.object.isRequired,
 	onClose: pt.func.isRequired
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Provider, connect} from 'react-redux';
+import {Provider} from 'react-redux';
 
 import store from '../../store/store.js';
 
@@ -12,7 +12,7 @@ import LandingPage from '../landing-page/landing-page.jsx';
 
 import '../../assets/react-logo.png';
 
-class App extends baseComponent
+export default class App extends baseComponent
 {
     constructor(props) {
         super(props);
@@ -57,13 +57,3 @@ class App extends baseComponent
         )
     }
 }
-
-function mapDispatchToProps(dispatch) {
-	return {
-		toggleLandingPage: function() {
-			dispatch({type: 'TOGGLE_LANDING'});
-		}
-	}
-};
-
-export default connect(null, mapDispatchToProps)(App);

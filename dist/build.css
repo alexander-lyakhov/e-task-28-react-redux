@@ -1,0 +1,392 @@
+/*
+------------------------------------------------------------------------------------------
+	Reset section. v1.0 | 20080212
+------------------------------------------------------------------------------------------
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, menu, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td	{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul, menu {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/*
+	remember to define focus styles!
+*/
+:focus {
+	outline: 0;
+}
+
+/*
+	remember to highlight inserts somehow!
+*/
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}html, body {
+    height: 100%;
+}
+
+body    {
+    font: 13px verdana;
+    color: #000;
+    background: #000;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* IE/Edge */
+    user-select: none;
+}
+
+.screen-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*
+ *  Footer
+ */
+
+footer {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+}
+
+.svg-icon path {
+    fill: #808080;
+}
+
+.svg-icon path:hover {
+    fill: #ccc;
+}
+
+.social-link:hover .svg-icon path {
+    fill: #ccc;
+}
+
+.footer {
+    height: 144px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -144px;
+}body {
+  font: 13px verdana;
+  color: #eee;
+  background: #606060;
+  height: 100%;
+  position: relative;
+  overflow-y: scroll; }
+
+.main {
+  background: #404040;
+  max-width: 1200px;
+  min-width: 400px;
+  min-height: 100vh;
+  margin: 0 auto 0 auto;
+  padding: 64px 16px 144px; }
+header {
+  background: #c0c0c0;
+  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 64px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1; }
+
+.header-area {
+  background: #a8a8a8;
+  min-width: 400px;
+  max-width: 1200px;
+  height: 100%;
+  margin: auto;
+  padding: 0px 16px;
+  display: flex;
+  align-items: center; }
+  .header-area .text-wrapper {
+    background: #fff;
+    border: 2px solid #888;
+    border-radius: 4px;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 0px 0 8px; }
+  .header-area .txt-search {
+    font: 16px verdana, helvetica;
+    color: #000;
+    background: #fff;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 28px;
+    margin-right: 8px; }
+  .header-area .btn-search {
+    width: 48px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .header-area .btn-search img {
+      width: 32px;
+      height: 32px;
+      transition: all 0.2s;
+      /*
+            &:hover {
+                width: 32px;
+                height: 32px;
+                transition: all 0.2s;
+            }
+            */ }
+.sort-control {
+  background: #606060;
+  height: 36px;
+  display: flex;
+  float: left;
+  margin: 0 0 0 8px; }
+
+.sort-control__item {
+  color: #eee;
+  width: 84px;
+  height: 36px;
+  line-height: 36;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden; }
+  .sort-control__item.active {
+    color: #000;
+    background: #eee;
+    border-bottom: 3px solid #404040; }
+    .sort-control__item.active:after {
+      content: '';
+      background: #404040;
+      display: block;
+      width: 8px;
+      height: 8px;
+      position: absolute;
+      transform: rotate(45deg);
+      left: 50%;
+      bottom: 0;
+      margin: 0 0 -4px -4px; }
+.movies {
+  background: #888;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 8px 0; }
+  .movies .no-resalt {
+    font: 64px verdana;
+    color: #606060;
+    text-align: center;
+    width: 100%;
+    padding: 16px; }
+.movie-placeholder {
+  text-align: center;
+  width: 25%; }
+
+@media screen and (max-width: 1152px) {
+  .movie-placeholder {
+    width: 33.33%; } }
+
+@media screen and (max-width: 960px) {
+  .movie-placeholder {
+    width: 50%; } }
+
+.movie-card {
+  background: #fff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+  width: 256px;
+  margin: 8px auto; }
+  .movie-card .thumbnail {
+    background: #fff;
+    width: 256px;
+    height: 256px; }
+    .movie-card .thumbnail img {
+      background: #000;
+      width: 256px;
+      height: 256px;
+      object-fit: contain; }
+  .movie-card .info {
+    color: #000;
+    text-align: center;
+    letter-spacing: 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .movie-card .info h2 {
+      font: 20px georgia, helvetica;
+      color: #eee;
+      background: #606060;
+      width: 100%;
+      height: 90px;
+      line-height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer; }
+      .movie-card .info h2:hover {
+        background: #0080c0; }
+    .movie-card .info .status {
+      background: #e0e0e0;
+      border-top: 1px solid #c0c0c0;
+      width: 100%;
+      height: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+.likes {
+  height: 24px;
+  display: flex;
+  margin: 0 4px; }
+  .likes .like-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    cursor: pointer; }
+  .likes .like-value {
+    color: #eee;
+    background: #404040;
+    width: 48px;
+    height: 24px;
+    line-height: 24px;
+    display: block;
+    padding: 0 4px;
+    margin: 0 2px; }
+.rating {
+  margin: 0 4px; }
+  .rating .rating-item {
+    width: 24px;
+    height: 24px;
+    float: left;
+    cursor: pointer; }
+.landing-page {
+  color: #000;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  display: none; }
+  .landing-page:before {
+    content: '';
+    display: block;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0; }
+
+.landing-page.show {
+  display: block; }
+
+.landing-page__content {
+  background: #fff;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.5);
+  width: 710px;
+  height: 100vh;
+  padding: 48px 16px 16px 16px;
+  position: fixed;
+  right: 0; }
+  .landing-page__content .header {
+    background: #404040;
+    width: 100%;
+    height: 32px;
+    position: absolute;
+    left: 0;
+    top: 0; }
+    .landing-page__content .header .btn-close {
+      cursor: pointer;
+      margin: 4px;
+      float: right; }
+  .landing-page__content .poster {
+    border: 2px solid #000;
+    float: left;
+    margin: 0 16px 0 0;
+    padding: 4px; }
+  .landing-page__content h2 {
+    font: 24px Georgia;
+    text-align: center;
+    letter-spacing: 1px;
+    margin: 0 0 16px 0; }
+  .landing-page__content .row {
+    margin: 12px 0 12px 0; }
+    .landing-page__content .row.center {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+  .landing-page__content .likes {
+    font: 22px Georgia;
+    height: 24px;
+    line-height: 24px;
+    display: block;
+    padding: 0 2px; }
+  .landing-page__content .caption {
+    font-weight: bold;
+    display: block; }
+  .landing-page__content .value {
+    text-indent: 32px;
+    text-align: justify;
+    line-height: 24px;
+    display: block; }
+
+/*# sourceMappingURL=build.css.map*/

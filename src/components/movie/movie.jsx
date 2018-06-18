@@ -1,4 +1,5 @@
 import React, {PropTypes as pt} from 'react';
+import {connect} from 'react-redux';
 import baseComponent from '../base-component.jsx';
 
 import './movie.scss';
@@ -72,4 +73,12 @@ Movie.propTypes = {
 	details: pt.object.isRequired
 }
 
-export default Movie;
+function mapDispatchToProps(dispatch) {
+	return {
+		toggleLandingPage: function() {
+			dispatch({type: 'TOGGLE_LANDING'});
+		}
+	}
+};
+
+export default connect(null, mapDispatchToProps)(Movie);
