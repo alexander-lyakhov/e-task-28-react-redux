@@ -1,12 +1,17 @@
-import {createStore} from 'redux';
+import {createStore, combineReducers} from 'redux';
 
-let initState = {
+let appState = {
 	searchQuery: '',
-	sortQuery: 'nosort'
+	sortQuery: 'nosort',
+	isLandingOpen: false
 };
 
-function reducer(state = initState, action) {
-    console.log('state', state, action)
+let movieState = {
+	details: {}
+};
+
+function appReducer(state = appState, action) {
+    console.log('appState', state, 'action', action)
 
     if (action.type === 'SEARCH') {
     	return Object.assign({}, state, {searchQuery: action.searchQuery});
@@ -17,10 +22,25 @@ function reducer(state = initState, action) {
     }
 
     if (action.type === 'TOGGLE_LANDING') {
-    	console.log('TOGGLE_LANDING');
+    	return Object.assign({}, state, {isLandingOpen: !state.isLandingOpen});
     }
 
 	return state;
 }
 
-export default createStore(reducer);
+function movieReducer(state = movieState, action) {
+	console.log('movieState', state, 'action', action)
+
+    if (action.type === 'TOGGLE_LANDING') {
+    	return Object.assign({}, state, {details: action.data});
+    }
+
+	return state;
+}
+
+const reducers = combineReducers({
+	app: appReducer,
+	movie: movieReducer
+});
+
+export default createStore(reducers);

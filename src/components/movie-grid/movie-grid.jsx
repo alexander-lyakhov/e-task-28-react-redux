@@ -120,8 +120,8 @@ MovieGrid.propTypes = {
 
 function mapStateToProps(state) {
 	return {
-		searchQuery: state.searchQuery,
-		sortQuery: state.sortQuery
+		searchQuery: state.app.searchQuery,
+		sortQuery: state.app.sortQuery
 	}
 }
 

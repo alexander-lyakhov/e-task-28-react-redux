@@ -1,4 +1,5 @@
 import React, {PropTypes as pt} from 'react';
+import {connect} from 'react-redux';
 
 import './landing-page.scss';
 import iconClose from './img/icon-close.svg';
@@ -9,13 +10,13 @@ import Rating from '../rating/rating.jsx';
 function LandingPage(props)
 {
     let {isOpen} = props;
-    let {title='', posterUrl='', stars=0, likes=0, genres=[], actors=[], director='', description=''} = props.details;
+    let {title='', posterUrl='', stars=0, likes=0, genres=[], actors=[], director='', description=''} = props.details || {};
 
     return (
         <div className={'landing-page' + (isOpen ? ' show':'')}>
             <div className="landing-page__content">
                 <div className="header">
-                    <img src={iconClose} className="btn-close" width="24" height="24" onClick={props.onClose} />
+                    <img src={iconClose} className="btn-close" width="24" height="24" onClick={props.close} />
                 </div>
 
                 <img className="poster" src={posterUrl} width="320" />
@@ -57,9 +58,24 @@ function LandingPage(props)
 }
 
 LandingPage.propTypes = {
-    //isOpen: pt.bool.isRequired,
-	details: pt.object.isRequired,
-	onClose: pt.func.isRequired
+    isOpen: pt.bool.isRequired,
+	details: pt.object
 }
 
-export default LandingPage;
+function mapStateToProps(state) {
+	return {
+		isOpen: state.app.isLandingOpen,
+		details: state.movie.details
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		close: function() {
+			dispatch({type: 'TOGGLE_LANDING'});
+		}
+	}
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);

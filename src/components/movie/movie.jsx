@@ -17,7 +17,11 @@ class Movie extends baseComponent
 
         this.changeLikes = this.changeLikes.bind(this);
         this.changeRating = this.changeRating.bind(this);
-        this.movieTitleClick = this.movieTitleClick.bind(this);
+        this.openLandigPage = this.openLandigPage.bind(this);
+    }
+
+    openLandigPage() {
+    	this.props.toggleLandingPage(this.props.details);
     }
 
     changeLikes(delta) {
@@ -45,6 +49,8 @@ class Movie extends baseComponent
     render() {
         let {id, posterUrl: image, title, stars, likes} = this.props.details;
 
+        let {toggleLandingPage} = this.props;
+
         //console.log('movie: render');
 
         return (
@@ -56,7 +62,7 @@ class Movie extends baseComponent
                     </div>
 
                     <div className="info">
-                        <h2 onClick={this.movieTitleClick}>{title}</h2>
+                        <h2 onClick={this.openLandigPage}>{title}</h2>
 
                         <div className="status">
                             <Likes value={likes} onChange={this.changeLikes}/>
@@ -74,9 +80,10 @@ Movie.propTypes = {
 }
 
 function mapDispatchToProps(dispatch) {
+
 	return {
-		toggleLandingPage: function() {
-			dispatch({type: 'TOGGLE_LANDING'});
+		toggleLandingPage: function(data) {
+			dispatch({type: 'TOGGLE_LANDING', data: data});
 		}
 	}
 };
