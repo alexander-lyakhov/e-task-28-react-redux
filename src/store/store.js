@@ -1,17 +1,28 @@
 import {createStore, combineReducers} from 'redux';
 
-let appState = {
-	searchQuery: '',
-	sortQuery: 'nosort',
-	isLandingOpen: false
-};
+let initState = {
 
-let movieState = {
-	details: {}
-};
+	app: {
+    	searchQuery: '',
+    	sortQuery: 'nosort',
+    	isLandingOpen: false
+	},
 
-function appReducer(state = appState, action) {
-    console.log('appState', state, 'action', action)
+	movie: {
+		details: {}
+	},
+
+	movieList: []
+}
+
+console.log('state', initState)
+
+
+/*
+ *
+ */
+function appReducer(state = initState.app, action) {
+    //console.log('appState', state, 'action', action)
 
     if (action.type === 'SEARCH') {
     	return Object.assign({}, state, {searchQuery: action.searchQuery});
@@ -28,8 +39,11 @@ function appReducer(state = appState, action) {
 	return state;
 }
 
-function movieReducer(state = movieState, action) {
-	console.log('movieState', state, 'action', action)
+/*
+ *
+ */
+function movieReducer(state = initState.movie, action) {
+	//console.log('movieState', state, 'action', action)
 
     if (action.type === 'TOGGLE_LANDING') {
     	return Object.assign({}, state, {details: action.data});
@@ -38,9 +52,39 @@ function movieReducer(state = movieState, action) {
 	return state;
 }
 
+/*
+ *
+ */
+function movieListReducer(state = initState.movieList, action) {
+	console.log('movieListState', state, 'action', action)
+
+    if (action.type === 'LIKES.CHANGE') {
+
+    	let arr = state.map(function(item) {
+
+    	    let el = Object.assign({}, item);
+
+    		if (el.id === action.data.id) {
+    			el.likes += action.data.delta;
+    		}
+
+			return el;
+    	});
+
+    	return arr;
+    }
+
+    if (action.type === 'MOVIE_LIST.POPULATE') {
+    	return [...action.data];
+    }
+
+    return state;
+}
+
 const reducers = combineReducers({
 	app: appReducer,
-	movie: movieReducer
+	movie: movieReducer,
+	movieList: movieListReducer
 });
 
 export default createStore(reducers);

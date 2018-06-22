@@ -19,7 +19,10 @@ class MovieGrid extends baseComponent
 
 		this.changeLikes = this.changeLikes.bind(this);
 		this.changeRating = this.changeRating.bind(this);
-		this.movieTitleClick = this.movieTitleClick.bind(this);
+	}
+
+	componentDidMount() {
+		this.props.fillMovieList(data);
 	}
 
 	changeLikes(e) {
@@ -70,10 +73,6 @@ class MovieGrid extends baseComponent
 		});
 	}
 
-	movieTitleClick(e) {
-		this.emit('onMovieTitleClick', e);
-	}
-
 	get movies() {
 
 		let {searchQuery} = this.props;
@@ -91,7 +90,6 @@ class MovieGrid extends baseComponent
 						details={item}
 						onLikeChange={this.changeLikes}
 						onRatingChange={this.changeRating}
-						onMovieTitleClick={this.movieTitleClick}
 					 />
 				)
 			})
@@ -125,4 +123,12 @@ function mapStateToProps(state) {
 	}
 }
 
-export default connect(mapStateToProps)(MovieGrid);
+function mapDispatchToProps(dispatch) {
+	return {
+		fillMovieList: function(arr) {
+			dispatch({type: 'MOVIE_LIST.POPULATE', data: arr});
+		}
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieGrid);
