@@ -32,7 +32,7 @@ function appReducer(state = initState.app, action) {
     	return Object.assign({}, state, {sortQuery: action.sortQuery});
     }
 
-    if (action.type === 'TOGGLE_LANDING') {
+    if (action.type === 'LANDING.TOGGLE') {
     	return Object.assign({}, state, {isLandingOpen: !state.isLandingOpen});
     }
 
@@ -45,7 +45,7 @@ function appReducer(state = initState.app, action) {
 function movieReducer(state = initState.movie, action) {
 	//console.log('movieState', state, 'action', action)
 
-    if (action.type === 'TOGGLE_LANDING') {
+    if (action.type === 'LANDING.TOGGLE') {
     	return Object.assign({}, state, {details: action.data});
     }
 
@@ -56,7 +56,8 @@ function movieReducer(state = initState.movie, action) {
  *
  */
 function movieListReducer(state = initState.movieList, action) {
-	console.log('movieListState', state, 'action', action)
+
+	//console.log('movieListState', state, 'action', action)
 
     if (action.type === 'LIKES.CHANGE') {
 
@@ -66,6 +67,22 @@ function movieListReducer(state = initState.movieList, action) {
 
     		if (el.id === action.data.id) {
     			el.likes += action.data.delta;
+    		}
+
+			return el;
+    	});
+
+    	return arr;
+    }
+
+    if (action.type === 'RATING.CHANGE') {
+
+    	let arr = state.map(function(item) {
+
+    	    let el = Object.assign({}, item);
+
+    		if (el.id === action.data.id) {
+    			el.stars = action.data.stars;
     		}
 
 			return el;

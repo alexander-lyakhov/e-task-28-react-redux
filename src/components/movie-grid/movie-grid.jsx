@@ -12,55 +12,22 @@ class MovieGrid extends baseComponent
 {
 	constructor(props) {
 		super(props);
-
-		this.state = {
-			data: data
-		};
-
-		this.changeLikes = this.changeLikes.bind(this);
-		this.changeRating = this.changeRating.bind(this);
 	}
 
 	componentDidMount() {
 		this.props.fillMovieList(data);
 	}
 
-	changeLikes(e) {
-
-		for (let i = 0; i < data.length; i++) {
-
-			if (data[i].id === e.id) {
-				data[i].likes += e.delta;
-				break;
-			}
-		}
-
-		this.setState({data: data});
-	}
-
-	changeRating(e) {
-
-		for (let i = 0; i < data.length; i++) {
-
-			if (data[i].id === e.id) {
-				data[i].stars = e.stars;
-				break;
-			}
-		}
-
-		this.setState({data: data});
-	}
-
 	get sortedData() {
 
 		let {sortQuery} = this.props;
-		let {data: arr} = this.state;
+		let {movieList: arr} = this.props;
 
 		if (sortQuery === 'nosort') {
 			return arr;
 		}
 
-		return [].concat(arr).sort(function(a, b) {
+		return [...arr].sort(function(a, b) {
 			if (+a[sortQuery] < +b[sortQuery]) {
 				return 1;
 			}
@@ -82,22 +49,10 @@ class MovieGrid extends baseComponent
 		});
 
 		if (arr.length) {
-
-			return arr.map((item, index) => {
-				return (
-					<Movie
-						key={item.id}
-						details={item}
-						onLikeChange={this.changeLikes}
-						onRatingChange={this.changeRating}
-					 />
-				)
-			})
+			return arr.map((item) => <Movie key={item.id} details={item} />);
 		}
 		else {
-			return (
-				<div className="no-resalt">Nothing found</div>
-			);
+			return <div className="no-resalt">Nothing found</div>;
 		}
 	}
 
@@ -119,7 +74,8 @@ MovieGrid.propTypes = {
 function mapStateToProps(state) {
 	return {
 		searchQuery: state.app.searchQuery,
-		sortQuery: state.app.sortQuery
+		sortQuery: state.app.sortQuery,
+		movieList: state.movieList
 	}
 }
 

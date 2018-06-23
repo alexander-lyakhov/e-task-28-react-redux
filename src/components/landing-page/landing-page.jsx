@@ -72,7 +72,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		close: function() {
-			dispatch({type: 'TOGGLE_LANDING'});
+			dispatch({type: 'LANDING.TOGGLE'});
 		}
 	}
 }

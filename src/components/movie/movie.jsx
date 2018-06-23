@@ -25,12 +25,11 @@ class Movie extends baseComponent
     }
 
     changeLikes(delta) {
-        //this.emit('onLikeChange', {id: this.props.details.id, delta: delta});
         this.props.changeLikes({id: this.props.details.id, delta: delta});
     }
 
     changeRating(val) {
-        this.emit('onRatingChange', {id: this.props.details.id, stars: val});
+    	this.props.changeRating({id: this.props.details.id, stars: val});
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -41,10 +40,6 @@ class Movie extends baseComponent
         this.stars = nextProps.details.stars;
 
         return res;
-    }
-
-    movieTitleClick() {
-        this.emit('onMovieTitleClick', this.props.details);
     }
 
     render() {
@@ -84,13 +79,15 @@ function mapDispatchToProps(dispatch) {
 
 	return {
 		toggleLandingPage: function(data) {
-			dispatch({type: 'TOGGLE_LANDING', data: data});
+			dispatch({type: 'LANDING.TOGGLE', data: data});
 		},
 
 		changeLikes: function(data) {
-		    console.log('changeLikes', data);
-
 			dispatch({type: 'LIKES.CHANGE', data: data});
+		},
+
+		changeRating: function(data) {
+			dispatch({type: 'RATING.CHANGE', data: data});
 		}
 	}
 };
